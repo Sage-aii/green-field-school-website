@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - Green Field World School</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+  // Updated Tailwind CSS configuration with Deep Teal & Muted Gold palette
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          // Deep Teal as primary (emerald-700)
+          primary: '#047857',
+          // Muted Gold as secondary (amber-600) - used where a secondary accent is needed
+          secondary: '#D97706',
+          // Neutral tones for backgrounds and text
+          neutral: {
+            50: '#FAFAFA',   // Very light off-white
+            100: '#F5F5F5',  // Light gray
+            200: '#E5E5E5',
+            300: '#D4D4D4',
+            400: '#A3A3A3',
+            500: '#737373',
+            600: '#525252',
+            700: '#404040',
+            800: '#262626',
+            900: '#171717',  // Very dark, almost black
+          },
+          // Specific shades for program cards and resources for variety
+          emerald: {
+            50: '#ECFDF5',
+            100: '#D1FAE5',
+            500: '#10B981',
+            600: '#059669',
+            700: '#047857',
+            800: '#065F46'
+          },
+          amber: {
+            50: '#FFFBEB',
+            100: '#FEF3C7',
+            600: '#D97706',
+            800: '#92400E'
+          },
+          rose: { // For the "Hotel Management" card if a red hue is desired
+            50: '#FFF1F2',
+            100: '#FFE4E6',
+            500: '#F43F5E',
+            600: '#E11D48'
+          },
+          fuchsia: { // For "Arts & Humanities" card
+            50: '#FDF2F8',
+            100: '#FCE7F3',
+            500: '#D946EF',
+            600: '#C026D3'
+          },
+          sky: { // For some resource cards
+            50: '#F0F9FF',
+            100: '#E0F2FE',
+            500: '#0EA5E9',
+            600: '#0284C7'
+          }
+        },
+        borderRadius: {
+          'none': '0px',
+          'sm': '4px',
+          DEFAULT: '8px',
+          'md': '12px',
+          'lg': '16px',
+          'xl': '20px',
+          '2xl': '24px',
+          '3xl': '32px',
+          'full': '9999px',
+          'button': '8px'
+        }
+      }
+    }
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<style>
+/* Removed :where([class^="ri-"])::before { content: "\f3c2"; } as it overrides icons */
+body {
+font-family: 'Montserrat', sans-serif;
+transition: background-color 0.3s ease, color 0.3s ease;
+}
+body.light-mode {
+background-color: #FAFAFA; /* neutral-50 */
+color: #262626; /* neutral-800 */
+}
+body.dark-mode {
+background-color: #171717; /* neutral-900 */
+color: #F5F5F5; /* neutral-100 */
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Playfair Display', serif;
+}
+.hero-section {
+background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/ad.jpg');
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+}
+.nav-transparent {
+background-color: transparent;
+transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.nav-solid {
+background-color: rgba(23, 23, 23, 0.95); /* neutral-900 with opacity */
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.typewriter {
+  width: 25ch; /* Set the width to match text length */
+  overflow: hidden;
+  border-right: 0.15em solid #047857; /* primary color */
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+  animation: typing 3.5s steps(40, end) forwards, blink-caret 0.75s step-end 3.5s 2 forwards; /* Ensures blinking stops after typing */
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 110%; } /* Adjusted to fill content fully */
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #047857; } /* primary color */
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }
+  60% { transform: translateY(-10px); }
+}
+
+
+.card {
+transition: all 0.3s ease;
+}
+.card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.05);
+}
+.program-card {
+transition: all 0.3s ease;
+}
+.program-card:hover {
+transform: scale(1.03);
+}
+.faculty-image {
+transition: all 0.3s ease;
+}
+.faculty-image:hover {
+transform: scale(1.1);
+}
+.hotspot {
+animation: pulse 2s infinite;
+}
+@keyframes pulse {
+0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(4, 120, 87, 0.8); } /* emerald-700 with opacity */
+70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(4, 120, 87, 0); } /* emerald-700 with opacity */
+100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(4, 120, 87, 0); } /* emerald-700 with opacity */
+}
+.social-icon {
+transition: all 0.3s ease;
+}
+.social-icon:hover {
+transform: translateY(-3px);
+color: #047857; /* primary color */
+}
+.custom-checkbox {
+appearance: none;
+-webkit-appearance: none;
+width: 18px;
+height: 18px;
+border: 2px solid #047857; /* primary color */
+border-radius: 4px;
+outline: none;
+cursor: pointer;
+position: relative;
+}
+.custom-checkbox:checked {
+background-color: #047857; /* primary color */
+}
+.custom-checkbox:checked::after {
+content: "";
+position: absolute;
+top: 2px;
+left: 5px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.floating-label {
+position: absolute;
+pointer-events: none;
+left: 12px;
+top: 12px;
+transition: 0.2s ease all;
+}
+input:focus ~ .floating-label,
+input:not(:placeholder-shown) ~ .floating-label {
+top: -10px;
+left: 10px;
+font-size: 12px;
+opacity: 1;
+background: #FAFAFA; /* neutral-50 */
+padding: 0 5px;
+}
+.news-card {
+overflow: hidden;
+}
+.news-card img {
+transition: transform 0.5s ease;
+}
+.news-card:hover img {
+transform: scale(1.1);
+}
+.read-more-btn {
+position: relative;
+overflow: hidden;
+}
+.read-more-btn::after {
+content: "";
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background-color: #047857; /* primary color */
+transition: width 0.3s ease;
+}
+.read-more-btn:hover::after {
+width: 100%;
+}
+.carousel {
+scroll-behavior: smooth;
+scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar {
+display: none;
+}
+.carousel-indicator {
+transition: all 0.3s ease;
+}
+.carousel-indicator.active {
+background-color: #047857; /* primary color */
+width: 24px;
+}
+.counter {
+animation: count-up 2.5s ease-out;
+}
+@keyframes count-up {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.resource-card {
+transition: all 0.3s ease;
+}
+.resource-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.shine {
+position: relative;
+overflow: hidden;
+}
+.shine::after {
+content: "";
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+transform: rotate(30deg);
+animation: shine 3s infinite;
+}
+@keyframes shine {
+0% { transform: translateX(-100%) rotate(30deg); }
+100% { transform: translateX(100%) rotate(30deg); }
+}
+.dropdown {
+opacity: 0;
+transform: translateY(-10px);
+visibility: hidden;
+transition: all 0.3s ease;
+}
+.dropdown-container:hover .dropdown {
+opacity: 1;
+transform: translateY(0);
+visibility: visible;
+}
+.back-to-top {
+opacity: 0;
+visibility: hidden;
+transition: all 0.3s ease;
+}
+.back-to-top.visible {
+opacity: 1;
+visibility: visible;
+}
+@media (max-width: 768px) {
+.hero-section {
+background-attachment: scroll;
+}
+.mobile-menu {
+transform: translateX(-100%);
+transition: transform 0.3s ease;
+visibility: hidden;
+}
+.mobile-menu.open {
+transform: translateX(0);
+visibility: visible;
+}
+}
+/* Faculty Card Flip Effect */
+.flip-card-container {
+  perspective: 1000px;
+}
+.flip-card {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.flip-card.is-flipped {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.flip-card-front {
+  background-color: #ffffff;
+  z-index: 2;
+}
+.flip-card-back {
+  background-color: #ECFDF5; /* emerald-50 */
+  color: #262626; /* neutral-800 */
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+/* tsParticles Firework Styling */
+.firework-particle {
+  position: absolute;
+  background-color: #FFD700; /* Gold color, can be customized by tsParticles options */
+  border-radius: 50%;
+  opacity: 0;
+  animation: firework-burst 1s ease-out forwards;
+  z-index: 30;
+  pointer-events: none;
+}
+@keyframes firework-burst {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--translate-x)), calc(-50% + var(--translate-y))) scale(0);
+    opacity: 0;
+  }
+}
+/* Custom styles for animations and specific elements for Contact Page */
+#contact-page .contact-info-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+#contact-page .contact-info-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#contact-page .contact-form-container {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease-out 0.2s, transform 0.7s ease-out 0.2s; /* Slight delay */
+}
+#contact-page .contact-form-container.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+<!-- Navigation -->
+<header class="fixed w-full z-50 nav-transparent" id="main-header">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center text-white">
+      <i class="ri-sun-line dark:ri-moon-line"></i>
+    </button>
+    <!-- Corrected: Group logo image and text within a single flex container -->
+    <a href="index.html" class="flex items-center space-x-2">
+      <img src="/logo.jpg" alt="School Logo" class="h-10 w-10 rounded-full object-cover">
+      <span class="text-emerald-500 text-2xl font-['Pacifico']">GFWS</span>
+    </a>
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center space-x-8">
+      <div class="dropdown-container relative group">
+        <!-- Increased size and made bold -->
+        <a href="index.html" class="text-white hover:text-primary transition-colors duration-300 text-lg font-bold">Home</a>
+      </div>
+      <div class="dropdown-container relative group">
+        <!-- Increased size and made bold -->
+        <a href="about.html" class="text-white hover:text-primary transition-colors duration-300 text-lg font-bold">About Us</a>
+      </div>
+      <div class="dropdown-container relative group">
+        <!-- Increased size and made bold -->
+        <a href="index.html#admissions" class="text-white hover:text-primary transition-colors duration-300 text-lg font-bold">Admissions</a>
+        <div class="dropdown absolute left-0 mt-2 w-48 bg-white rounded shadow-lg py-2 z-10">
+          <a href="index.html#apply" class="block px-4 py-2 text-neutral-800 hover:bg-neutral-100">Apply Now</a>
+          <a href="index.html#requirements" class="block px-4 py-2 text-neutral-800 hover:bg-neutral-100">Requirements</a>
+          <a href="index.html#financial-aid" class="block px-4 py-2 text-neutral-800 hover:bg-neutral-100">Financial Aid</a>
+          <a href="index.html#international" class="block px-4 py-2 text-neutral-800 hover:bg-neutral-100">International Students</a>
+        </div>
+      </div>
+      <!-- Increased size and made bold -->
+      <a href="events.html" class="text-white hover:text-primary transition-colors duration-300 text-lg font-bold">Events</a>
+      <!-- Increased size and made bold -->
+      <a href="news.html" class="text-white hover:text-primary transition-colors duration-300 text-lg font-bold">News</a>
+      <!-- Increased size and made bold -->
+      <a href="contact.html" class="text-white hover:text-primary transition-colors duration-300 text-lg font-bold">Contact</a>
+    </nav>
+    <div class="flex items-center space-x-4">
+      <!-- Student Portal button remains unchanged -->
+      <a href="#" style="background-color: #047857;" class="hidden md:block text-white font-bold px-4 py-2 rounded-button transition-all duration-300 whitespace-nowrap">
+        Student Portal
+      </a>
+    </div>
+  </div>
+
+<!-- Mobile Menu Button -->
+<button class="md:hidden w-10 h-10 flex items-center justify-center text-white" id="mobile-menu-button">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</div>
+<!-- Mobile Navigation -->
+<div class="mobile-menu fixed top-0 left-0 h-full w-64 bg-neutral-900 z-50 p-4 shadow-lg transform -translate-x-full transition-transform duration-300 hidden" id="mobile-menu">
+<div class="flex justify-between items-center mb-8">
+<a href="index.html" class="text-white text-xl font-['Pacifico'] flex items-center">
+  <img src="/logo.jpg" alt="School Logo" class="h-10 w-10 rounded-full object-cover mr-2 inline-block">
+  GFWS
+</a>
+<button class="w-8 h-8 flex items-center justify-center text-white" id="close-menu-button">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<nav class="flex flex-col space-y-4">
+<a href="index.html" class="text-white hover:text-primary transition-colors duration-300 py-2">Home</a>
+<a href="about.html" class="text-white hover:text-primary transition-colors duration-300 py-2">About Us</a>
+<a href="index.html#admissions" class="text-white hover:text-primary transition-colors duration-300 py-2">Admissions</a>
+<a href="events.html" class="text-white hover:text-primary transition-colors duration-300 py-2">Events</a>
+<a href="news.html" class="text-white hover:text-primary transition-colors duration-300 py-2">News</a>
+<a href="contact.html" class="text-white hover:text-primary transition-colors duration-300 py-2">Contact</a>
+<a href="#portal" class="bg-primary hover:bg-opacity-90 text-white px-4 py-2 rounded-button transition-all duration-300 mt-4 text-center whitespace-nowrap">Student Portal</a>
+</nav>
+</div>
+</header>
+
+<!-- CONTACT US SUBPAGE CODE STARTS HERE -->
+<section id="contact-page" class="py-16 bg-neutral-100 font-inter">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-neutral-900 leading-tight">
+        Get In <span class="text-primary">Touch</span>
+      </h2>
+      <p class="text-neutral-700 max-w-3xl mx-auto text-lg">
+        We'd love to hear from you! Whether you have questions about admissions, programs, or general inquiries, our team is here to help.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Contact Information Cards -->
+      <div class="space-y-8">
+        <div class="contact-info-card bg-white rounded-xl shadow-lg p-8 flex items-start transform transition-all duration-300 hover:scale-[1.01] hover:shadow-xl">
+          <div class="w-16 h-16 flex items-center justify-center bg-emerald-100 text-primary rounded-full flex-shrink-0 mr-6">
+            <i class="ri-map-pin-line ri-3x"></i>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-2 text-neutral-800">Our Location</h3>
+            <p class="text-neutral-700 text-lg">Near Birtamode Municipality, Birtamod-1, Jhapa, Nepal</p>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Green+Field+World+School,+Baneshwor,+Kathmandu,+Nepal" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline mt-2 inline-block">Get Directions</a>
+          </div>
+        </div>
+
+        <div class="contact-info-card bg-white rounded-xl shadow-lg p-8 flex items-start transform transition-all duration-300 hover:scale-[1.01] hover:shadow-xl" style="transition-delay: 0.1s;">
+          <div class="w-16 h-16 flex items-center justify-center bg-amber-100 text-secondary rounded-full flex-shrink-0 mr-6">
+            <i class="ri-phone-line ri-3x"></i>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-2 text-neutral-800">Call Us</h3>
+            <p class="text-neutral-700 text-lg">General Inquiries: 023-xxxxxx</p>
+            <p class="text-neutral-700 text-lg">Admissions: 023-xxxxxx</p>
+            <a href="tel:+97714478901" class="text-primary hover:underline mt-2 inline-block">Call Now</a>
+          </div>
+        </div>
+
+        <div class="contact-info-card bg-white rounded-xl shadow-lg p-8 flex items-start transform transition-all duration-300 hover:scale-[1.01] hover:shadow-xl" style="transition-delay: 0.2s;">
+          <div class="w-16 h-16 flex items-center justify-center bg-sky-100 text-sky-600 rounded-full flex-shrink-0 mr-6">
+            <i class="ri-mail-line ri-3x"></i>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-2 text-neutral-800">Email Us</h3>
+            <p class="text-neutral-700 text-lg">General: info@gfwsacademy.edu</p>
+            <p class="text-neutral-700 text-lg">Admissions: admissions@gfwsacademy.edu</p>
+            <a href="mailto:info@gfwsacademy.edu" class="text-primary hover:underline mt-2 inline-block">Send Email</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-container bg-white rounded-xl shadow-lg p-8">
+        <h3 class="text-3xl font-bold mb-6 text-neutral-800 text-center">Send Us a Message</h3>
+        <form class="space-y-6">
+          <div>
+            <label for="name" class="block text-neutral-700 text-sm font-semibold mb-2">Your Name</label>
+            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="John Doe">
+          </div>
+          <div>
+            <label for="email" class="block text-neutral-700 text-sm font-semibold mb-2">Your Email</label>
+            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="john.doe@example.com">
+          </div>
+          <div>
+            <label for="subject" class="block text-neutral-700 text-sm font-semibold mb-2">Subject</label>
+            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Inquiry about admissions">
+          </div>
+          <div>
+            <label for="message" class="block text-neutral-700 text-sm font-semibold mb-2">Your Message</label>
+            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Type your message here..."></textarea>
+          </div>
+          <button type="submit" class="w-full bg-primary text-white py-3 rounded-button font-semibold text-lg shadow-lg transition-all duration-300 hover:bg-emerald-800 hover:shadow-xl">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Intersection Observer for fade-in-up animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target); // Stop observing once visible
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('#contact-page .contact-info-card, #contact-page .contact-form-container').forEach(element => {
+        observer.observe(element);
+      });
+    });
+  </script>
+</section>
+<!-- CONTACT US SUBPAGE CODE ENDS HERE -->
+
+<!-- Footer Section -->
+<footer class="bg-neutral-900 text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<div>
+<a href="index.html" class="mb-6 inline-block">
+  <img src="/logo.jpg" alt="School Logo" class="h-10 w-15 rounded-full object-cover inline-block">
+</a>
+<p class="text-neutral-400 mb-6">Green Field World School is committed to providing exceptional education and fostering a diverse, inclusive community of learners and leaders.</p>
+<div class="flex space-x-4">
+<a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-neutral-800 text-neutral-400 hover:text-primary transition-colors duration-300">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-neutral-800 text-neutral-400 hover:text-primary transition-colors duration-300">
+<i class="ri-twitter-fill"></i>
+</a>
+<a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-neutral-800 text-neutral-400 hover:text-primary transition-colors duration-300">
+<i class="ri-instagram-fill"></i>
+</a>
+<a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-neutral-800 text-neutral-400 hover:text-primary transition-colors duration-300">
+<i class="ri-linkedin-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">Quick Links</h3>
+<ul class="space-y-3">
+<li><a href="about.html" class="text-neutral-400 hover:text-white transition-colors duration-300">About Us</a></li>
+<li><a href="index.html#program-carousel" class="text-neutral-400 hover:text-white transition-colors duration-300">Academics</a></li>
+<li><a href="index.html#admissions" class="text-neutral-400 hover:text-white transition-colors duration-300">Admissions</a></li>
+<li><a href="news.html" class="text-neutral-400 hover:text-white transition-colors duration-300">News & Events</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">Contact Us</h3>
+<ul class="space-y-3">
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-neutral-400 mt-0.5 mr-3">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-neutral-400">Near Birtamode Municipality, Birtamod-1, Jhapa, Nepal</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-neutral-400 mr-3">
+<i class="ri-phone-line"></i>
+</div>
+<span class="text-neutral-400">023-xxxxxx</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-neutral-400 mr-3">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-neutral-400">info@gfwsacademy.edu</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">Newsletter</h3>
+<p class="text-neutral-400 mb-4">Subscribe to our newsletter to receive updates on news, events, and opportunities.</p>
+<form class="mb-4">
+<div class="flex">
+<input type="email" placeholder="Your email address" class="w-full px-4 py-2 border-none rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary text-neutral-900">
+<button type="submit" class="bg-primary hover:bg-emerald-800 text-white px-4 py-2 rounded-r-lg transition-colors duration-300 whitespace-nowrap">Subscribe</button>
+</div>
+</form>
+<p class="text-xs text-neutral-500">By subscribing, you agree to our Privacy Policy and consent to receive updates from our school.</p>
+</div>
+</div>
+<div class="border-t border-neutral-800 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-neutral-500 text-sm mb-4 md:mb-0">© 2025 Green Field World School. All rights reserved.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-neutral-500 hover:text-white text-sm transition-colors duration-300">Privacy Policy</a>
+<a href="#" class="text-neutral-500 hover:text-white text-sm transition-colors duration-300">Terms of Service</a>
+<a href="#" class="text-neutral-500 hover:text-white text-sm transition-colors duration-300">Accessibility</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- Back to Top Button -->
+<button class="back-to-top fixed bottom-8 right-8 w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg hover:bg-emerald-800 transition-all duration-300" id="back-to-top">
+<i class="ri-arrow-up-line ri-lg"></i>
+</button>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Theme toggle functionality
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+function setTheme(theme) {
+if (theme === 'dark') {
+body.classList.remove('light-mode');
+body.classList.add('dark-mode', 'dark');
+themeToggle.querySelector('i').className = 'ri-moon-line';
+} else {
+body.classList.remove('dark-mode', 'dark');
+body.classList.add('light-mode');
+themeToggle.querySelector('i').className = 'ri-sun-line';
+}
+localStorage.setItem('theme', theme);
+}
+// Check for saved theme preference or use system preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+setTheme(savedTheme);
+} else {
+setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
+}
+// Theme toggle click handler
+themeToggle.addEventListener('click', () => {
+const currentTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+setTheme(currentTheme);
+});
+// Listen for system theme changes
+prefersDarkScheme.addEventListener('change', (e) => {
+if (!localStorage.getItem('theme')) {
+setTheme(e.matches ? 'dark' : 'light');
+}
+});
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const targetId = this.getAttribute('href').slice(1);
+const targetElement = document.getElementById(targetId);
+if (targetElement) {
+targetElement.scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+// Close mobile menu if open
+const mobileMenu = document.getElementById('mobile-menu');
+if (mobileMenu.classList.contains('open')) {
+mobileMenu.classList.remove('open');
+document.body.style.overflow = '';
+}
+}
+});
+});
+// Navigation scroll effect
+const header = document.querySelector('header');
+window.addEventListener('scroll', function() {
+if (window.scrollY > 50) {
+header.classList.remove('nav-transparent');
+header.classList.add('nav-solid');
+} else {
+header.classList.add('nav-transparent');
+header.classList.remove('nav-solid');
+}
+});
+// Mobile menu toggle
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const closeMenuButton = document.getElementById('close-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuButton.addEventListener('click', function() {
+mobileMenu.classList.add('open');
+mobileMenu.classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+});
+closeMenuButton.addEventListener('click', function() {
+mobileMenu.classList.remove('open');
+setTimeout(() => {
+mobileMenu.classList.add('hidden');
+}, 300);
+document.body.style.overflow = '';
+});
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+if (mobileMenu.classList.contains('open') &&
+!mobileMenu.contains(event.target) &&
+!mobileMenuButton.contains(event.target)) {
+mobileMenu.classList.remove('open');
+setTimeout(() => {
+mobileMenu.classList.add('hidden');
+}, 300);
+document.body.style.overflow = '';
+}
+});
+// Close mobile menu when pressing Escape key
+document.addEventListener('keydown', function(event) {
+if (event.key === 'Escape' && mobileMenu.classList.contains('open')) {
+mobileMenu.classList.remove('open');
+setTimeout(() => {
+mobileMenu.classList.add('hidden');
+}, 300);
+document.body.style.overflow = '';
+}
+});
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Program carousel navigation
+const carousel = document.getElementById('program-carousel');
+const prevButton = document.getElementById('prev-program');
+const nextButton = document.getElementById('next-program');
+const carouselItems = carousel.querySelectorAll('.program-card');
+const itemWidth = carouselItems[0].offsetWidth + 24; // Width + gap
+prevButton.addEventListener('click', function() {
+carousel.scrollLeft -= itemWidth;
+});
+nextButton.addEventListener('click', function() {
+carousel.scrollLeft += itemWidth;
+});
+// Carousel indicators
+const indicators = document.querySelectorAll('.carousel-indicator');
+indicators.forEach((indicator, index) => {
+indicator.addEventListener('click', function() {
+// Remove active class from all indicators
+indicators.forEach(ind => ind.classList.remove('active'));
+// Add active class to clicked indicator
+indicator.classList.add('active');
+// Scroll carousel to corresponding position
+carousel.scrollLeft = index * (carousel.scrollWidth / indicators.length);
+});
+});
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Password visibility toggle
+const togglePassword = document.getElementById('toggle-password');
+const passwordInput = document.getElementById('password');
+if (togglePassword && passwordInput) { // Added check if elements exist
+  togglePassword.addEventListener('click', function() {
+  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+  passwordInput.setAttribute('type', type);
+  // Toggle icon
+  const icon = togglePassword.querySelector('i');
+  if (type === 'text') {
+  icon.classList.remove('ri-eye-line');
+  icon.classList.add('ri-eye-off-line');
+  } else {
+  icon.classList.remove('ri-eye-off-line');
+  icon.classList.add('ri-eye-line');
+  }
+  });
+}
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Back to top button
+const backToTopButton = document.getElementById('back-to-top');
+if (backToTopButton) { // Added check if element exists
+  window.addEventListener('scroll', function() {
+  if (window.scrollY > 300) {
+  backToTopButton.classList.add('visible');
+  } else {
+  backToTopButton.classList.remove('visible');
+  }
+  });
+  backToTopButton.addEventListener('click', function() {
+  window.scrollTo({
+  top: 0,
+  behavior: 'smooth'
+  });
+  });
+}
+});
+</script>
+</body>
+</html>
