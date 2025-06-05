@@ -93,6 +93,8 @@
 body {
 font-family: 'Montserrat', sans-serif;
 transition: background-color 0.3s ease, color 0.3s ease;
+/* Crucial addition for mobile responsiveness: Prevent horizontal overflow */
+overflow-x: hidden; 
 }
 body.light-mode {
 background-color: #F8F5F1; /* subtle-light */
@@ -120,18 +122,20 @@ background-color: rgba(23, 23, 23, 0.95); /* neutral-900 with opacity */
 box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 .typewriter {
-  width: 25ch; /* Set the width to match text length */
+  /* Adjusted width to be responsive and prevent overflow */
+  width: 100%; /* Occupy full available width */
+  max-width: 25ch; /* Original max width, but will respect parent's padding */
   overflow: hidden;
   border-right: 0.15em solid #047857; /* primary color */
   white-space: nowrap;
-  margin: 0 auto;
+  /* Removed margin: 0 auto; as it's already centered by flex parent */
   letter-spacing: 0.15em;
-  animation: typing 3.5s steps(40, end) forwards, blink-caret 0.75s step-end 3.5s 2 forwards; /* Ensures blinking stops after typing */
+  /* Animation removed here as it's added dynamically by JS for better control */
 }
 
 @keyframes typing {
   from { width: 0; }
-  to { width: 110%; } /* Adjusted to fill content fully */
+  to { width: 100%; } /* Adjusted to fill its container */
 }
 
 @keyframes blink-caret {
@@ -277,7 +281,7 @@ transition: all 0.3s ease;
 }
 .resource-card:hover {
 transform: translateY(-5px);
-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.05);
 }
 .shine {
 position: relative;
@@ -318,18 +322,32 @@ transition: all 0.3s ease;
 opacity: 1;
 visibility: visible;
 }
+/* ORIGINAL MEDIA QUERY - Adjusted to prevent overflow on mobile menu */
 @media (max-width: 768px) {
 .hero-section {
 background-attachment: scroll;
 }
 .mobile-menu {
-transform: translateX(-100%);
+/* Removed initial transform and visibility to be controlled solely by JS class 'open' */
+/* transform: translateX(-100%); */
 transition: transform 0.3s ease;
-visibility: hidden;
+/* visibility: hidden; */
 }
 .mobile-menu.open {
 transform: translateX(0);
-visibility: visible;
+/* Changed from 'visible' to 'block' to manage display more explicitly */
+display: block; 
+}
+/* Ensure elements that are normally flex or grid don't break on small screens */
+.flex-wrap-sm-down {
+  flex-wrap: wrap;
+}
+/* Ensure the poster modal adjusts correctly on very small screens */
+#posterModal .rounded-lg {
+  border-radius: 0; /* Remove rounded corners on very small screens for better fit */
+}
+#posterModal .w-11\/12 {
+  width: 100%; /* Ensure full width on very small screens */
 }
 }
 /* Faculty Card Flip Effect */
@@ -1264,7 +1282,7 @@ visibility: visible;
     </div>
 
     <div class="flex justify-center mb-8">
-      <div class="inline-flex bg-neutral-200 p-1 rounded-full shadow-inner" id="department-filters">
+      <div class="inline-flex bg-neutral-200 p-1 rounded-full shadow-inner flex-wrap gap-2 sm:gap-0"> <!-- Added flex-wrap and gap for mobile -->
         <button class="px-4 py-2 rounded-full bg-emerald-700 text-white whitespace-nowrap text-sm font-medium transition-colors duration-300 hover:bg-emerald-800" data-department="all">All Departments</button>
         <button class="px-4 py-2 rounded-full text-neutral-700 hover:bg-neutral-300 transition-colors duration-300 whitespace-nowrap text-sm font-medium" data-department="accounting">Accounting</button>
         <button class="px-4 py-2 rounded-full text-neutral-700 hover:bg-neutral-300 transition-colors duration-300 whitespace-nowrap text-sm font-medium" data-department="computer-science">Computer Science</button>
@@ -2109,15 +2127,16 @@ const closeMenuButton = document.getElementById('close-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 mobileMenuButton.addEventListener('click', function() {
 mobileMenu.classList.add('open');
-mobileMenu.classList.remove('hidden');
-document.body.style.overflow = 'hidden';
+mobileMenu.classList.remove('hidden'); // Ensure it's not hidden by the initial CSS
+document.body.style.overflow = 'hidden'; // Prevent scrolling on body
 });
 closeMenuButton.addEventListener('click', function() {
 mobileMenu.classList.remove('open');
+// Use a timeout to re-add hidden after transition, ensuring smooth close
 setTimeout(() => {
 mobileMenu.classList.add('hidden');
-}, 300);
-document.body.style.overflow = '';
+}, 300); // Match this to your CSS transition duration
+document.body.style.overflow = ''; // Restore scrolling on body
 });
 // Close mobile menu when clicking outside
 document.addEventListener('click', function(event) {
@@ -2148,13 +2167,17 @@ const carousel = document.getElementById('program-carousel');
 const prevButton = document.getElementById('prev-program');
 const nextButton = document.getElementById('next-program');
 const carouselItems = carousel.querySelectorAll('.program-card');
-const itemWidth = carouselItems[0].offsetWidth + 24; // Width + gap
+// Calculate itemWidth dynamically, accounting for gap (space-x-6 = 24px)
+// This makes sure the scroll amount is correct on all screen sizes.
+const itemWidth = carouselItems[0].offsetWidth + (parseFloat(getComputedStyle(carousel).gap) || 0);
+
 prevButton.addEventListener('click', function() {
 carousel.scrollLeft -= itemWidth;
 });
 nextButton.addEventListener('click', function() {
 carousel.scrollLeft += itemWidth;
 });
+
 // Carousel indicators
 const indicators = document.querySelectorAll('.carousel-indicator');
 indicators.forEach((indicator, index) => {
@@ -2164,12 +2187,23 @@ indicators.forEach(ind => ind.classList.remove('active'));
 // Add active class to clicked indicator
 indicator.classList.add('active');
 // Scroll carousel to corresponding position
-carousel.scrollLeft = index * (carousel.scrollWidth / indicators.length);
+carousel.scrollLeft = index * itemWidth; // Use itemWidth for accurate scrolling
 });
 });
+
+// Update carousel position on window resize to adjust for new itemWidth
+window.addEventListener('resize', function() {
+    const updatedItemWidth = carouselItems[0].offsetWidth + (parseFloat(getComputedStyle(carousel).gap) || 0);
+    carousel.scrollLeft = currentIndex * updatedItemWidth;
 });
+
+// Initialize current index for carousel if needed for auto-play or initial state
+let currentIndex = 0; // Declare currentIndex outside event listener to persist state
+});
+
+
 document.addEventListener('DOMContentLoaded', function() {
-// Password visibility toggle
+// Password visibility toggle (This seems to be from a login page, if not needed on homepage, remove)
 const togglePassword = document.getElementById('toggle-password');
 const passwordInput = document.getElementById('password');
 if (togglePassword && passwordInput) { // Added check if elements exist
@@ -2208,26 +2242,26 @@ if (backToTopButton) { // Added check if element exists
 }
 });
 
-// Intersection Observer for news grid cards
+// Intersection Observer for news grid cards and other fade-in elements
 document.addEventListener('DOMContentLoaded', () => {
-  const newsGridCards = document.querySelectorAll('.news-grid-card');
+  const animatedElements = document.querySelectorAll('.news-grid-card, .fade-in-up, .slide-in-left, .slide-in-right');
   const observerOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.1
+    threshold: 0.1 // Trigger when 10% of the element is visible
   };
 
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
+        entry.target.classList.add('is-visible'); // Use 'is-visible' class
+        observer.unobserve(entry.target); // Stop observing once visible
       }
     });
   }, observerOptions);
 
-  newsGridCards.forEach(card => {
-    observer.observe(card);
+  animatedElements.forEach(element => {
+    observer.observe(element);
   });
 });
 </script>
