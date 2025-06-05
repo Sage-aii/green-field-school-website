@@ -683,35 +683,32 @@ visibility: visible;
         Student Portal
       </a>
     </div>
+    <!-- Mobile Menu Button (Hamburger) -->
+    <button class="md:hidden w-10 h-10 flex items-center justify-center text-white" id="mobile-menu-button">
+      <i class="ri-menu-line ri-lg"></i>
+    </button>
   </div>
-
-<!-- Mobile Menu Button -->
-<button class="md:hidden w-10 h-10 flex items-center justify-center text-white" id="mobile-menu-button">
-<i class="ri-menu-line ri-lg"></i>
-</button>
-</div>
-</div>
-<!-- Mobile Navigation -->
-<div class="mobile-menu fixed top-0 left-0 h-full w-64 bg-neutral-900 z-50 p-4 shadow-lg transform -translate-x-full transition-transform duration-300 hidden" id="mobile-menu">
-<div class="flex justify-between items-center mb-8">
-<a href="#hero-section" class="text-white text-xl font-['Pacifico'] flex items-center">
-  <img src="/logo.jpg" alt="School Logo" class="h-10 w-10 rounded-full object-cover mr-2 inline-block">
-  GFWS
-</a>
-<button class="w-8 h-8 flex items-center justify-center text-white" id="close-menu-button">
-<i class="ri-close-line ri-lg"></i>
-</button>
-</div>
-<nav class="flex flex-col space-y-4">
-<a href="#hero-section" class="text-white hover:text-primary transition-colors duration-300 py-2">Home</a>
-<a href="#about-us" class="text-white hover:text-primary transition-colors duration-300 py-2">About Us</a>
-<a href="#admissions" class="text-white hover:text-primary transition-colors duration-300 py-2">Admissions</a>
-<a href="events.html" class="text-white hover:text-primary transition-colors duration-300 py-2">Events</a>
-<a href="news.html" class="text-white hover:text-primary transition-colors duration-300 py-2">News</a>
-<a href="contact.html" class="text-white hover:text-primary transition-colors duration-300 py-2">Contact</a>
-<a href="#portal" class="bg-primary hover:bg-opacity-90 text-white px-4 py-2 rounded-button transition-all duration-300 mt-4 text-center whitespace-nowrap">Student Portal</a>
-</nav>
-</div>
+  <!-- Mobile Navigation -->
+  <div class="mobile-menu fixed top-0 left-0 h-full w-64 bg-neutral-900 z-50 p-4 shadow-lg transform -translate-x-full transition-transform duration-300" id="mobile-menu">
+    <div class="flex justify-between items-center mb-8">
+      <a href="#hero-section" class="text-white text-xl font-['Pacifico'] flex items-center">
+        <img src="/logo.jpg" alt="School Logo" class="h-10 w-10 rounded-full object-cover mr-2 inline-block">
+        GFWS
+      </a>
+      <button class="w-8 h-8 flex items-center justify-center text-white" id="close-menu-button">
+        <i class="ri-close-line ri-lg"></i>
+      </button>
+    </div>
+    <nav class="flex flex-col space-y-4">
+      <a href="#hero-section" class="text-white hover:text-primary transition-colors duration-300 py-2">Home</a>
+      <a href="#about-us" class="text-white hover:text-primary transition-colors duration-300 py-2">About Us</a>
+      <a href="#admissions" class="text-white hover:text-primary transition-colors duration-300 py-2">Admissions</a>
+      <a href="events.html" class="text-white hover:text-primary transition-colors duration-300 py-2">Events</a>
+      <a href="news.html" class="text-white hover:text-primary transition-colors duration-300 py-2">News</a>
+      <a href="contact.html" class="text-white hover:text-primary transition-colors duration-300 py-2">Contact</a>
+      <a href="#" class="bg-primary hover:bg-opacity-90 text-white px-4 py-2 rounded-button transition-all duration-300 mt-4 text-center whitespace-nowrap">Student Portal</a>
+    </nav>
+  </div>
 </header>
 <!-- Hero Section -->
 <section class="hero-section min-h-screen flex items-center" id="hero-section">
@@ -1816,11 +1813,11 @@ visibility: visible;
 </div>
 </div>
 <div class="flex justify-center mb-8">
-<div class="inline-flex bg-neutral-100 p-1 rounded-full">
-<button class="px-4 py-2 rounded-full bg-primary text-white whitespace-nowrap">All Resources</button>
-<button class="px-4 py-2 rounded-full text-neutral-700 hover:bg-neutral-200 transition-colors duration-300 whitespace-nowrap">Academic</button>
-<button class="px-4 py-2 rounded-full text-neutral-700 hover:bg-neutral-200 transition-colors duration-300 whitespace-nowrap">Sports</button>
-<button class="px-4 py-2 rounded-full text-neutral-700 hover:bg-neutral-200 transition-colors duration-300 whitespace-nowrap">HM</button>
+<div class="inline-flex bg-neutral-100 p-1 rounded-full flex-wrap gap-2 sm:gap-0"> <!-- Added flex-wrap and gap for mobile -->
+<button class="px-4 py-2 rounded-full bg-primary text-white whitespace-nowrap text-sm sm:text-base">All Resources</button>
+<button class="px-4 py-2 rounded-full text-neutral-700 hover:bg-neutral-200 transition-colors duration-300 whitespace-nowrap text-sm sm:text-base">Academic</button>
+<button class="px-4 py-2 rounded-full text-neutral-700 hover:bg-neutral-200 transition-colors duration-300 whitespace-nowrap text-sm sm:text-base">Sports</button>
+<button class="px-4 py-2 rounded-full text-neutral-700 hover:bg-neutral-200 transition-colors duration-300 whitespace-nowrap text-sm sm:text-base">HM</button>
 </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
