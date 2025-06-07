@@ -554,23 +554,25 @@ display: block;
       <!-- Contact Form -->
       <div class="contact-form-container bg-white rounded-xl shadow-lg p-8">
         <h3 class="text-3xl font-bold mb-6 text-neutral-800 text-center">Send Us a Message</h3>
-        <form class="space-y-6">
+        <form id="contactForm" class="space-y-6">
           <div>
             <label for="name" class="block text-neutral-700 text-sm font-semibold mb-2">Your Name</label>
-            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="John Doe">
+            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="John Doe" required>
           </div>
           <div>
             <label for="email" class="block text-neutral-700 text-sm font-semibold mb-2">Your Email</label>
-            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="john.doe@example.com">
+            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="john.doe@example.com" required>
           </div>
           <div>
             <label for="subject" class="block text-neutral-700 text-sm font-semibold mb-2">Subject</label>
-            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Inquiry about admissions">
+            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Inquiry about admissions" required>
           </div>
           <div>
             <label for="message" class="block text-neutral-700 text-sm font-semibold mb-2">Your Message</label>
-            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Type your message here..."></textarea>
+            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Type your message here..." required></textarea>
           </div>
+          <!-- Message display area -->
+          <div id="formMessage" class="mt-4 p-4 rounded-lg text-center hidden"></div>
           <button type="submit" class="w-full bg-primary text-white py-3 rounded-button font-semibold text-lg shadow-lg transition-all duration-300 hover:bg-emerald-800 hover:shadow-xl">
             Send Message
           </button>
@@ -581,7 +583,7 @@ display: block;
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Intersection Observer for fade-in-up animations
+      // Intersection Observer for fade-in-up animations (Existing)
       const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -600,220 +602,195 @@ display: block;
       document.querySelectorAll('#contact-page .contact-info-card, #contact-page .contact-form-container').forEach(element => {
         observer.observe(element);
       });
-    });
-  </script>
-</section>
-<!-- CONTACT US SUBPAGE CODE ENDS HERE -->
 
-<!-- Footer Section -->
-<footer class="bg-neutral-900 text-white pt-16 pb-8">
-<div class="container mx-auto px-4">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-<div>
-<a href="index.html" class="mb-6 inline-block">
-  <img src="/logo.jpg" alt="School Logo" class="h-10 w-15 rounded-full object-cover inline-block">
-</a>
-<p class="text-neutral-400 mb-6">Green Field World School is committed to providing exceptional education and fostering a diverse, inclusive community of learners and leaders.</p>
-<div class="flex space-x-4">
-<a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-neutral-800 text-neutral-400 hover:text-primary transition-colors duration-300">
-<i class="ri-facebook-fill"></i>
-</a>
-<a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-neutral-800 text-neutral-400 hover:text-primary transition-colors duration-300">
-<i class="ri-twitter-fill"></i>
-</a>
-<a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-neutral-800 text-neutral-400 hover:text-primary transition-colors duration-300">
-<i class="ri-instagram-fill"></i>
-</a>
-<a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-neutral-800 text-neutral-400 hover:text-primary transition-colors duration-300">
-<i class="ri-linkedin-fill"></i>
-</a>
-</div>
-</div>
-<div>
-<h3 class="text-lg font-bold mb-6">Quick Links</h3>
-<ul class="space-y-3">
-<li><a href="about.html" class="text-neutral-400 hover:text-white transition-colors duration-300">About Us</a></li>
-<li><a href="index.html#program-carousel" class="text-neutral-400 hover:text-white transition-colors duration-300">Academics</a></li>
-<li><a href="index.html#admissions" class="text-neutral-400 hover:text-white transition-colors duration-300">Admissions</a></li>
-<li><a href="news.html" class="text-neutral-400 hover:text-white transition-colors duration-300">News & Events</a></li>
-</ul>
-</div>
-<div>
-<h3 class="text-lg font-bold mb-6">Contact Us</h3>
-<ul class="space-y-3">
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-neutral-400 mt-0.5 mr-3">
-<i class="ri-map-pin-line"></i>
-</div>
-<span class="text-neutral-400">Near Birtamode Municipality, Birtamod-1, Jhapa, Nepal</span>
-</li>
-<li class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-neutral-400 mr-3">
-<i class="ri-phone-line"></i>
-</div>
-<span class="text-neutral-400">023-xxxxxx</span>
-</li>
-<li class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-neutral-400 mr-3">
-<i class="ri-mail-line"></i>
-</div>
-<span class="text-neutral-400">info@gfwsacademy.edu</span>
-</li>
-</ul>
-</div>
-<div>
-<h3 class="text-lg font-bold mb-6">Newsletter</h3>
-<p class="text-neutral-400 mb-4">Subscribe to our newsletter to receive updates on news, events, and opportunities.</p>
-<form class="mb-4">
-<div class="flex">
-<input type="email" placeholder="Your email address" class="w-full px-4 py-2 border-none rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary text-neutral-900">
-<button type="submit" class="bg-primary hover:bg-emerald-800 text-white px-4 py-2 rounded-r-lg transition-colors duration-300 whitespace-nowrap">Subscribe</button>
-</div>
-</form>
-<p class="text-xs text-neutral-500">By subscribing, you agree to our Privacy Policy and consent to receive updates from our school.</p>
-</div>
-</div>
-<div class="border-t border-neutral-800 pt-8">
-<div class="flex flex-col md:flex-row justify-between items-center">
-<p class="text-neutral-500 text-sm mb-4 md:mb-0">© 2025 Green Field World School. All rights reserved.</p>
-<div class="flex space-x-4">
-<a href="#" class="text-neutral-500 hover:text-white text-sm transition-colors duration-300">Privacy Policy</a>
-<a href="#" class="text-neutral-500 hover:text-white text-sm transition-colors duration-300">Terms of Service</a>
-<a href="#" class="text-neutral-500 hover:text-white text-sm transition-colors duration-300">Accessibility</a>
-</div>
-</div>
-</div>
-</div>
-</footer>
-<!-- Back to Top Button -->
-<button class="back-to-top fixed bottom-8 right-8 w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg hover:bg-emerald-800 transition-all duration-300" id="back-to-top">
-<i class="ri-arrow-up-line ri-lg"></i>
-</button>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-// Theme toggle functionality
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-function setTheme(theme) {
-if (theme === 'dark') {
-body.classList.remove('light-mode');
-body.classList.add('dark-mode', 'dark');
-themeToggle.querySelector('i').className = 'ri-moon-line';
-} else {
-body.classList.remove('dark-mode', 'dark');
-body.classList.add('light-mode');
-themeToggle.querySelector('i').className = 'ri-sun-line';
-}
-localStorage.setItem('theme', theme);
-}
-// Check for saved theme preference or use system preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-setTheme(savedTheme);
-} else {
-setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
-}
-// Theme toggle click handler
-themeToggle.addEventListener('click', () => {
-const currentTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
-setTheme(currentTheme);
-});
-// Listen for system theme changes
-prefersDarkScheme.addEventListener('change', (e) => {
-if (!localStorage.getItem('theme')) {
-setTheme(e.matches ? 'dark' : 'light');
-}
-});
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-anchor.addEventListener('click', function (e) {
-e.preventDefault();
-const targetId = this.getAttribute('href').slice(1);
-const targetElement = document.getElementById(targetId);
-if (targetElement) {
-targetElement.scrollIntoView({
-behavior: 'smooth',
-block: 'start'
-});
-// Close mobile menu if open
-const mobileMenu = document.getElementById('mobile-menu');
-if (mobileMenu.classList.contains('open')) {
-mobileMenu.classList.remove('open');
-document.body.style.overflow = '';
-}
-}
-});
-});
-// Navigation scroll effect
-const header = document.querySelector('header');
-window.addEventListener('scroll', function() {
-if (window.scrollY > 50) {
-header.classList.remove('nav-transparent');
-header.classList.add('nav-solid');
-} else {
-header.classList.add('nav-transparent');
-header.classList.remove('nav-solid');
-}
-});
-// Mobile menu toggle
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const closeMenuButton = document.getElementById('close-menu-button');
-const mobileMenu = document.getElementById('mobile-menu');
-mobileMenuButton.addEventListener('click', function() {
-mobileMenu.classList.add('open');
-mobileMenu.classList.remove('hidden');
-document.body.style.overflow = 'hidden';
-});
-closeMenuButton.addEventListener('click', function() {
-mobileMenu.classList.remove('open');
-setTimeout(() => {
-mobileMenu.classList.add('hidden');
-}, 300);
-document.body.style.overflow = '';
-});
-// Close mobile menu when clicking outside
-document.addEventListener('click', function(event) {
-if (mobileMenu.classList.contains('open') &&
-!mobileMenu.contains(event.target) &&
-!mobileMenuButton.contains(event.target)) {
-mobileMenu.classList.remove('open');
-setTimeout(() => {
-mobileMenu.classList.add('hidden');
-}, 300);
-document.body.style.overflow = '';
-}
-});
-// Close mobile menu when pressing Escape key
-document.addEventListener('keydown', function(event) {
-if (event.key === 'Escape' && mobileMenu.classList.contains('open')) {
-mobileMenu.classList.remove('open');
-setTimeout(() => {
-mobileMenu.classList.add('hidden');
-}, 300);
-document.body.style.overflow = '';
-}
-});
-});
-// Back to top button
-document.addEventListener('DOMContentLoaded', function() {
-const backToTopButton = document.getElementById('back-to-top');
-if (backToTopButton) { // Added check if element exists
-  window.addEventListener('scroll', function() {
-  if (window.scrollY > 300) {
-  backToTopButton.classList.add('visible');
-  } else {
-  backToTopButton.classList.remove('visible');
-  }
-  });
-  backToTopButton.addEventListener('click', function() {
-  window.scrollTo({
-  top: 0,
-  behavior: 'smooth'
-  });
-  });
-}
-});
+      // --- New JavaScript for Contact Form Submission ---
+      const contactForm = document.getElementById('contactForm');
+      const formMessage = document.getElementById('formMessage');
+
+      if (contactForm && formMessage) { // Ensure elements exist before adding listeners
+          contactForm.addEventListener('submit', async function(e) {
+              e.preventDefault(); // Prevent default form submission (page reload)
+
+              // Clear previous messages and styling
+              formMessage.classList.add('hidden');
+              formMessage.textContent = '';
+              formMessage.classList.remove('bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+
+              // Disable the submit button and show sending state
+              const submitButton = contactForm.querySelector('button[type="submit"]');
+              submitButton.disabled = true;
+              submitButton.textContent = 'Sending...';
+
+              // Collect form data
+              const formData = new FormData(contactForm);
+              const data = {};
+              for (let [key, value] of formData.entries()) {
+                  data[key] = value;
+              }
+
+              try {
+                  // Send data to your Netlify Function
+                  const response = await fetch('/.netlify/functions/submit-contact', {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify(data)
+                  });
+
+                  const result = await response.json();
+
+                  // Display message based on response
+                  formMessage.classList.remove('hidden');
+                  if (response.ok) { // Check if status code is 2xx
+                      formMessage.classList.add('bg-green-100', 'text-green-800');
+                      formMessage.textContent = result.message || 'Message sent successfully!';
+                      contactForm.reset(); // Clear the form on successful submission
+                  } else {
+                      formMessage.classList.add('bg-red-100', 'text-red-800');
+                      formMessage.textContent = result.message || 'Failed to send message. Please try again.';
+                  }
+              } catch (error) {
+                  console.error('Error submitting form:', error);
+                  formMessage.classList.remove('hidden');
+                  formMessage.classList.add('bg-red-100', 'text-red-800');
+                  formMessage.textContent = 'An unexpected error occurred. Please try again.';
+              } finally {
+                  // Re-enable the submit button
+                  submitButton.disabled = false;
+                  submitButton.textContent = 'Send Message';
+              }
+          });
+      }
+      // --- End New JavaScript for Contact Form Submission ---
+    });
+
+    // Existing smooth scroll, navigation, theme toggle, and back-to-top scripts
+    // (These are outside the above DOMContentLoaded, but still within the overall <script> tag)
+    document.addEventListener('DOMContentLoaded', function() {
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode', 'dark');
+                themeToggle.querySelector('i').className = 'ri-moon-line';
+            } else {
+                body.classList.remove('dark-mode', 'dark');
+                body.classList.add('light-mode');
+                themeToggle.querySelector('i').className = 'ri-sun-line';
+            }
+            localStorage.setItem('theme', theme);
+        }
+        // Check for saved theme preference or use system preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else {
+            setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
+        }
+        // Theme toggle click handler
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+            setTheme(currentTheme);
+        });
+        // Listen for system theme changes
+        prefersDarkScheme.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').slice(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu.classList.contains('open')) {
+                        mobileMenu.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        });
+        // Navigation scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.remove('nav-transparent');
+                header.classList.add('nav-solid');
+            } else {
+                header.classList.add('nav-transparent');
+                header.classList.remove('nav-solid');
+            }
+        });
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.add('open');
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+        closeMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.remove('open');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = '';
+        });
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (mobileMenu.classList.contains('open') &&
+                !mobileMenu.contains(event.target) &&
+                !mobileMenuButton.contains(event.target)) {
+                mobileMenu.classList.remove('open');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+                document.body.style.overflow = '';
+            }
+        });
+        // Close mobile menu when pressing Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                mobileMenu.classList.remove('open');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+                document.body.style.overflow = '';
+            }
+        });
+    });
+    // Back to top button
+    document.addEventListener('DOMContentLoaded', function() {
+        const backToTopButton = document.getElementById('back-to-top');
+        if (backToTopButton) { // Added check if element exists
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    });
 </script>
 </body>
 </html>
