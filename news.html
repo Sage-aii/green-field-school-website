@@ -90,6 +90,8 @@
 body {
 font-family: 'Montserrat', sans-serif;
 transition: background-color 0.3s ease, color 0.3s ease;
+/* Crucial addition for mobile responsiveness: Prevent horizontal overflow */
+overflow-x: hidden;
 }
 body.light-mode {
 background-color: #FAFAFA; /* neutral-50 */
@@ -320,13 +322,25 @@ visibility: visible;
 background-attachment: scroll;
 }
 .mobile-menu {
-transform: translateX(-100%);
+/* Removed initial transform and visibility to be controlled solely by JS class 'open' */
+/* transform: translateX(-100%); */
 transition: transform 0.3s ease;
-visibility: hidden;
+/* visibility: hidden; */
 }
 .mobile-menu.open {
 transform: translateX(0);
-visibility: visible;
+/* Changed from 'visible' to 'block' to manage display more explicitly */
+display: block;
+}
+/* Ensure elements that are normally flex or grid don't break on small screens */
+.flex-wrap-sm-down {
+  flex-wrap: wrap;
+}
+/* For news page, ensure the filter buttons wrap */
+.filter-buttons-wrapper {
+  flex-wrap: wrap;
+  justify-content: center; /* Center buttons when wrapped */
+  gap: 0.5rem; /* Small gap between wrapped buttons */
 }
 }
 /* Faculty Card Flip Effect */
@@ -508,7 +522,7 @@ visibility: visible;
 
     <!-- News Categories/Filters -->
     <div class="flex justify-center mb-12">
-      <div class="inline-flex bg-white p-1 rounded-full shadow-lg">
+      <div class="inline-flex bg-white p-1 rounded-full shadow-lg flex-wrap filter-buttons-wrapper">
         <button class="filter-button px-6 py-3 rounded-full bg-primary text-white font-semibold text-base transition-all duration-300 hover:bg-emerald-800 active:scale-95" data-category="all">All News</button>
         <button class="filter-button px-6 py-3 rounded-full text-neutral-700 font-medium text-base transition-all duration-300 hover:bg-emerald-50 hover:text-primary active:scale-95" data-category="academic">Academic</button>
         <button class="filter-button px-6 py-3 rounded-full text-neutral-700 font-medium text-base transition-all duration-300 hover:bg-emerald-50 hover:text-primary active:scale-95" data-category="community">Community</button>
@@ -869,54 +883,8 @@ document.body.style.overflow = '';
 }
 });
 });
-document.addEventListener('DOMContentLoaded', function() {
-// Program carousel navigation
-const carousel = document.getElementById('program-carousel');
-const prevButton = document.getElementById('prev-program');
-const nextButton = document.getElementById('next-program');
-const carouselItems = carousel.querySelectorAll('.program-card');
-const itemWidth = carouselItems[0].offsetWidth + 24; // Width + gap
-prevButton.addEventListener('click', function() {
-carousel.scrollLeft -= itemWidth;
-});
-nextButton.addEventListener('click', function() {
-carousel.scrollLeft += itemWidth;
-});
-// Carousel indicators
-const indicators = document.querySelectorAll('.carousel-indicator');
-indicators.forEach((indicator, index) => {
-indicator.addEventListener('click', function() {
-// Remove active class from all indicators
-indicators.forEach(ind => ind.classList.remove('active'));
-// Add active class to clicked indicator
-indicator.classList.add('active');
-// Scroll carousel to corresponding position
-carousel.scrollLeft = index * (carousel.scrollWidth / indicators.length);
-});
-});
-});
-document.addEventListener('DOMContentLoaded', function() {
-// Password visibility toggle
-const togglePassword = document.getElementById('toggle-password');
-const passwordInput = document.getElementById('password');
-if (togglePassword && passwordInput) { // Added check if elements exist
-  togglePassword.addEventListener('click', function() {
-  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-  passwordInput.setAttribute('type', type);
-  // Toggle icon
-  const icon = togglePassword.querySelector('i');
-  if (type === 'text') {
-  icon.classList.remove('ri-eye-line');
-  icon.classList.add('ri-eye-off-line');
-  } else {
-  icon.classList.remove('ri-eye-off-line');
-  icon.classList.add('ri-eye-line');
-  }
-  });
-}
-});
-document.addEventListener('DOMContentLoaded', function() {
 // Back to top button
+document.addEventListener('DOMContentLoaded', function() {
 const backToTopButton = document.getElementById('back-to-top');
 if (backToTopButton) { // Added check if element exists
   window.addEventListener('scroll', function() {

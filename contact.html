@@ -90,6 +90,8 @@
 body {
 font-family: 'Montserrat', sans-serif;
 transition: background-color 0.3s ease, color 0.3s ease;
+/* Crucial addition for mobile responsiveness: Prevent horizontal overflow */
+overflow-x: hidden;
 }
 body.light-mode {
 background-color: #FAFAFA; /* neutral-50 */
@@ -320,13 +322,24 @@ visibility: visible;
 background-attachment: scroll;
 }
 .mobile-menu {
-transform: translateX(-100%);
+/* Removed initial transform and visibility to be controlled solely by JS class 'open' */
+/* transform: translateX(-100%); */
 transition: transform 0.3s ease;
-visibility: hidden;
+/* visibility: hidden; */
 }
 .mobile-menu.open {
 transform: translateX(0);
-visibility: visible;
+/* Changed from 'visible' to 'block' to manage display more explicitly */
+display: block;
+}
+/* Ensure elements that are normally flex or grid don't break on small screens */
+.flex-wrap-sm-down {
+  flex-wrap: wrap;
+}
+/* For contact page, ensure the grid layout adapts */
+#contact-page .grid {
+  grid-template-columns: 1fr; /* Stack columns on small screens */
+  gap: 2rem; /* Consistent gap */
 }
 }
 /* Faculty Card Flip Effect */
@@ -458,14 +471,12 @@ visibility: visible;
         Student Portal
       </a>
     </div>
+    <!-- Mobile Menu Button (Hamburger) -->
+    <button class="md:hidden w-10 h-10 flex items-center justify-center text-white" id="mobile-menu-button">
+      <i class="ri-menu-line ri-lg"></i>
+    </button>
   </div>
 
-<!-- Mobile Menu Button -->
-<button class="md:hidden w-10 h-10 flex items-center justify-center text-white" id="mobile-menu-button">
-<i class="ri-menu-line ri-lg"></i>
-</button>
-</div>
-</div>
 <!-- Mobile Navigation -->
 <div class="mobile-menu fixed top-0 left-0 h-full w-64 bg-neutral-900 z-50 p-4 shadow-lg transform -translate-x-full transition-transform duration-300 hidden" id="mobile-menu">
 <div class="flex justify-between items-center mb-8">
@@ -784,54 +795,8 @@ document.body.style.overflow = '';
 }
 });
 });
-document.addEventListener('DOMContentLoaded', function() {
-// Program carousel navigation
-const carousel = document.getElementById('program-carousel');
-const prevButton = document.getElementById('prev-program');
-const nextButton = document.getElementById('next-program');
-const carouselItems = carousel.querySelectorAll('.program-card');
-const itemWidth = carouselItems[0].offsetWidth + 24; // Width + gap
-prevButton.addEventListener('click', function() {
-carousel.scrollLeft -= itemWidth;
-});
-nextButton.addEventListener('click', function() {
-carousel.scrollLeft += itemWidth;
-});
-// Carousel indicators
-const indicators = document.querySelectorAll('.carousel-indicator');
-indicators.forEach((indicator, index) => {
-indicator.addEventListener('click', function() {
-// Remove active class from all indicators
-indicators.forEach(ind => ind.classList.remove('active'));
-// Add active class to clicked indicator
-indicator.classList.add('active');
-// Scroll carousel to corresponding position
-carousel.scrollLeft = index * (carousel.scrollWidth / indicators.length);
-});
-});
-});
-document.addEventListener('DOMContentLoaded', function() {
-// Password visibility toggle
-const togglePassword = document.getElementById('toggle-password');
-const passwordInput = document.getElementById('password');
-if (togglePassword && passwordInput) { // Added check if elements exist
-  togglePassword.addEventListener('click', function() {
-  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-  passwordInput.setAttribute('type', type);
-  // Toggle icon
-  const icon = togglePassword.querySelector('i');
-  if (type === 'text') {
-  icon.classList.remove('ri-eye-line');
-  icon.classList.add('ri-eye-off-line');
-  } else {
-  icon.classList.remove('ri-eye-off-line');
-  icon.classList.add('ri-eye-line');
-  }
-  });
-}
-});
-document.addEventListener('DOMContentLoaded', function() {
 // Back to top button
+document.addEventListener('DOMContentLoaded', function() {
 const backToTopButton = document.getElementById('back-to-top');
 if (backToTopButton) { // Added check if element exists
   window.addEventListener('scroll', function() {
