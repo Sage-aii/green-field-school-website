@@ -108,7 +108,7 @@ h1, h2, h3, h4, h5, h6 {
 font-family: 'Playfair Display', serif;
 }
 .hero-section {
-background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/ad.jpg');
+background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('/alu.jpg');
 background-size: cover;
 background-position: center;
 background-attachment: fixed;
@@ -666,7 +666,7 @@ display: block;
     <!-- Corrected: Group logo image and text within a single flex container -->
     <a href="#hero-section" class="flex items-center space-x-2">
       <img src="/logo.jpg" alt="School Logo" class="h-10 w-10 rounded-full object-cover">
-      <span class="text-emerald-500 text-2xl font-['Pacifico']">GFWS</span>
+      <span class="text-emerald-500 text-2xl font-['Montserrat'] font-extrabold">GFWS</span>
     </a>
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex items-center space-x-8">
@@ -900,24 +900,12 @@ display: block;
         </div>
         <div class="flex flex-wrap justify-center items-center gap-10">
           <div class="flex flex-col items-center group">
-            <img src="https://placehold.co/100x50/D4D4D4/262626?text=Partner+A" alt="Partner A Logo" class="h-14 object-contain transition-transform duration-300 group-hover:scale-110">
-            <p class="text-sm font-semibold text-neutral-700 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Global Ed Alliance</p>
+            <img src="https://placehold.co/100x50/D4D4D4/262626?text=Aditya+shah" alt="Partner A Logo" class="h-14 object-contain transition-transform duration-300 group-hover:scale-110">
+            <p class="text-sm font-semibold text-neutral-700 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Developer</p>
           </div>
           <div class="flex flex-col items-center group">
-            <img src="https://placehold.co/100x50/D4D4D4/262626?text=Partner+B" alt="Partner B Logo" class="h-14 object-contain transition-transform duration-300 group-hover:scale-110">
-            <p class="text-sm font-semibold text-neutral-700 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Innovate Tech</p>
-          </div>
-          <div class="flex flex-col items-center group">
-            <img src="https://placehold.co/100x50/D4D4D4/262626?text=Partner+C" alt="Partner C Logo" class="h-14 object-contain transition-transform duration-300 group-hover:scale-110">
-            <p class="text-sm font-semibold text-neutral-700 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Arts & Culture Org</p>
-          </div>
-          <div class="flex flex-col items-center group">
-            <img src="https://placehold.co/100x50/D4D4D4/262626?text=Partner+D" alt="Partner D Logo" class="h-14 object-contain transition-transform duration-300 group-hover:scale-110">
-            <p class="text-sm font-semibold text-neutral-700 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Sports Academy</p>
-          </div>
-          <div class="flex flex-col items-center group">
-            <img src="https://placehold.co/100x50/D4D4D4/262626?text=Partner+E" alt="Partner E Logo" class="h-14 object-contain transition-transform duration-300 group-hover:scale-110">
-            <p class="text-sm font-semibold text-neutral-700 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Eco-Friendly Cert</p>
+            <img src="https://placehold.co/100x50/D4D4D4/262626?text=Pulkit+Agrawal" alt="Partner B Logo" class="h-14 object-contain transition-transform duration-300 group-hover:scale-110">
+            <p class="text-sm font-semibold text-neutral-700 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">UI/UX Designer</p>
           </div>
         </div>
       </div>
@@ -1274,7 +1262,7 @@ display: block;
 <!-- REVAMPED ANNOUNCEMENTS & NEWS SECTION ENDS HERE -->
 
 <!-- REVAMPED FACULTY SECTION -->
-<section class="py-16 bg-subtle-light font-inter">
+<section class="py-16 bg-neutral-100 font-inter">
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
       <h2 class="text-3xl md:text-4xl font-bold mb-4 text-neutral-800">Meet Our <span class="text-primary">Distinguished</span> Faculty</h2>
@@ -1282,7 +1270,7 @@ display: block;
     </div>
 
     <div class="flex justify-center mb-8">
-      <div class="inline-flex bg-neutral-200 p-1 rounded-full shadow-inner flex-wrap gap-2 sm:gap-0"> <!-- Added flex-wrap and gap for mobile -->
+      <div class="inline-flex bg-neutral-200 p-1 rounded-full shadow-inner flex-wrap gap-2 sm:gap-0" id="department-filters">
         <button class="px-4 py-2 rounded-full bg-emerald-700 text-white whitespace-nowrap text-sm font-medium transition-colors duration-300 hover:bg-emerald-800" data-department="all">All Departments</button>
         <button class="px-4 py-2 rounded-full text-neutral-700 hover:bg-neutral-300 transition-colors duration-300 whitespace-nowrap text-sm font-medium" data-department="accounting">Accounting</button>
         <button class="px-4 py-2 rounded-full text-neutral-700 hover:bg-neutral-300 transition-colors duration-300 whitespace-nowrap text-sm font-medium" data-department="computer-science">Computer Science</button>
@@ -1291,228 +1279,249 @@ display: block;
       </div>
     </div>
 
-    <div class="faculty-grid-container">
-      <!-- Faculty Card 1 -->
-      <div class="flip-card-container h-[400px] faculty-card-revamped" data-department="engineering">
-        <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
-          <div class="flip-card-front">
-            <div class="faculty-image-container w-36 h-36 rounded-full overflow-hidden mb-4 flex items-center justify-center">
-              <img src="/suraj.png" alt="Dr. Aditya Shah" class="w-full h-full object-cover object-top">
-            </div>
-            <h3 class="text-xl font-bold mb-1 text-neutral-800">Suraj Thapa</h3>
-            <p class="text-neutral-600 mb-3">+2 HEAD</p>
-            <div class="flex space-x-3 mt-auto">
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-linkedin-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-twitter-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-mail-line"></i>
-              </a>
-            </div>
-          </div>
-          <div class="flip-card-back">
-            <p class="text-lg font-semibold italic">"Innovation is not just about new ideas, but about finding new ways to make existing ideas better."</p>
-            <p class="text-base mt-4">- Mr. Suraj Thapa</p>
-          </div>
-        </div>
-      </div>
+    <!-- Faculty Slider Container -->
+    <div class="relative">
+      <button id="slider-left-btn" class="absolute left-0 top-1/2 -translate-y-1/2 bg-neutral-800 text-white p-2 rounded-full shadow-lg z-10 opacity-70 hover:opacity-100 transition-opacity duration-300">
+        <i class="ri-arrow-left-s-line text-2xl"></i>
+      </button>
+      <div id="faculty-slider" class="faculty-slider flex overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 no-scrollbar">
+        <!-- Faculty Card 1: -->
+        <div class="flip-card-container flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 p-4 snap-center h-[400px] faculty-card-revamped" data-department="accounting">
+          <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
+            <div class="flip-card-front flex flex-col items-center p-0 text-center"> <!-- Removed p-6 for image to touch edges -->
+              <!-- Image directly, fills width, fixed height, top-rounded corners -->
+              <img src="/suraaj.png" alt="Suraj" class="w-full h-56 object-cover object-center rounded-t-xl mb-4"> <!-- h-56 for 224px, rounded-t-xl for top corners only -->
 
-      <!-- Faculty Card 2 -->
-      <div class="flip-card-container h-[400px] faculty-card-revamped" data-department="economics">
-        <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
-          <div class="flip-card-front">
-            <div class="faculty-image-container w-36 h-36 rounded-full overflow-hidden mb-4 flex items-center justify-center">
-              <img src="https://placehold.co/150x150/B0B0B0/FFFFFF?text=Dr.+Pulkit+Agrawal" alt="Dr. Pulkit Agrawal" class="w-full h-full object-cover object-top">
+              <div class="px-6 pb-6 w-full flex flex-col items-center"> <!-- Added padding here for text content -->
+                <h3 class="text-2xl font-bold mb-1 text-neutral-800">Suraj Thapa</h3>
+                <p class="text-neutral-700 text-lg font-semibold mb-2">+2 HEAD</p>
+                <p class="text-neutral-600 text-sm mb-3">A visionary head driving innovation and growth.</p>
+                <div class="flex space-x-4 mt-auto">
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-instagram-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-facebook-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-mail-line text-2xl"></i>
+                  </a>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold mb-1 text-neutral-800">Dr. Pulkit Agrawal</h3>
-            <p class="text-neutral-600 mb-3">Professor of Economics</p>
-            <div class="flex space-x-3 mt-auto">
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-linkedin-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-twitter-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-mail-line"></i>
-              </a>
+            <div class="flip-card-back">
+              <p class="text-lg font-semibold italic">"Innovation is not just about new ideas, but about finding new ways to make existing ideas better."</p>
+              <p class="text-base mt-4">- Suraj Thapa</p>
             </div>
-          </div>
-          <div class="flip-card-back">
-            <p class="text-lg font-semibold italic">"The economy is a complex dance of human decisions; understanding it is key to shaping our future."</p>
-            <p class="text-base mt-4">- Dr. Pulkit Agrawal</p>
           </div>
         </div>
-      </div>
 
-      <!-- Faculty Card 3 -->
-      <div class="flip-card-container h-[400px] faculty-card-revamped" data-department="computer-science">
-        <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
-          <div class="flip-card-front">
-            <div class="faculty-image-container w-36 h-36 rounded-full overflow-hidden mb-4 flex items-center justify-center">
-              <img src="https://placehold.co/150x150/C0C0C0/FFFFFF?text=Dr.+Marcus+Williams" alt="Dr. Marcus Williams" class="w-full h-full object-cover object-top">
+        <!-- Faculty Card 2: -->
+        <div class="flip-card-container flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 p-4 snap-center h-[400px] faculty-card-revamped" data-department="hotel-management">
+          <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
+            <div class="flip-card-front flex flex-col items-center p-0 text-center">
+              <img src="/pravakar.png" alt="Prabhakar Soni" class="w-full h-56 object-cover object-center rounded-t-xl mb-4">
+              <div class="px-6 pb-6 w-full flex flex-col items-center">
+                <h3 class="text-2xl font-bold mb-1 text-neutral-800">Prabhakar Soni</h3>
+                <p class="text-neutral-700 text-lg font-semibold mb-2">Accounts</p>
+                <p class="text-neutral-600 text-sm mb-3">A strategic Accounts ensuring efficiency and excellence.</p>
+                <div class="flex space-x-4 mt-auto">
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-instagram-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-twitter-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-mail-line text-2xl"></i>
+                  </a>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold mb-1 text-neutral-800">Dr. Gemini</h3>
-            <p class="text-neutral-600 mb-3">Chair, Computer Science</p>
-            <div class="flex space-x-3 mt-auto">
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-linkedin-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-twitter-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-mail-line"></i>
-              </a>
+            <div class="flip-card-back">
+              <p class="text-lg font-semibold italic">"Accounting is not just about numbers; it's the language of business, providing clarity and confidence for informed decisions."</p>
+              <p class="text-base mt-4">- Prabhakar Soni</p>
             </div>
-          </div>
-          <div class="flip-card-back">
-            <p class="text-lg font-semibold italic">"The future of technology is not just about what we can build, but how we can use it to empower humanity."</p>
-            <p class="text-base mt-4">- Dr. Gemini</p>
           </div>
         </div>
-      </div>
+          <!-- Faculty Card 2.5: Nepali -->
+        <div class="flip-card-container flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 p-4 snap-center h-[400px] faculty-card-revamped" data-department="accounting">
+          <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
+            <div class="flip-card-front flex flex-col items-center p-0 text-center">
+              <img src="/nepali.jpeg" alt="Nepali" class="w-full h-56 object-cover object-center rounded-t-xl mb-4">
+              <div class="px-6 pb-6 w-full flex flex-col items-center">
+                <h3 class="text-2xl font-bold mb-1 text-neutral-800">Nepali Mam</h3>
+                <p class="text-neutral-700 text-lg font-semibold mb-2">Nepali</p>
+                <p class="text-neutral-600 text-sm mb-3">A strategic Business ensuring financial stability and growth.</p>
+                <div class="flex space-x-4 mt-auto">
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-instagram-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-twitter-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-mail-line text-2xl"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <p class="text-lg font-semibold italic">"Our language is the repository of our history, our dreams, and our identity. To learn Nepali is to connect with the heart of our nation."</p>
+              <p class="text-base mt-4">- Nepali</p>
+            </div>
+          </div>
+        </div>
+        <!-- Faculty Card 3: Bivek Uprety -->
+        <div class="flip-card-container flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 p-4 snap-center h-[400px] faculty-card-revamped" data-department="accounting">
+          <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
+            <div class="flip-card-front flex flex-col items-center p-0 text-center">
+              <img src="/bivek.PNG" alt="Bivek Uprety" class="w-full h-56 object-cover object-center rounded-t-xl mb-4">
+              <div class="px-6 pb-6 w-full flex flex-col items-center">
+                <h3 class="text-2xl font-bold mb-1 text-neutral-800">Bivek Uprety</h3>
+                <p class="text-neutral-700 text-lg font-semibold mb-2">Business</p>
+                <p class="text-neutral-600 text-sm mb-3">A strategic Business ensuring financial stability and growth.</p>
+                <div class="flex space-x-4 mt-auto">
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-instagram-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-twitter-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-mail-line text-2xl"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <p class="text-lg font-semibold italic">"The future of technology is not just about what we can build, but how we can use it to empower humanity."</p>
+              <p class="text-base mt-4">- Bivek Uprety</p>
+            </div>
+          </div>
+        </div>
 
-      <!-- Faculty Card 4 -->
-      <div class="flip-card-container h-[400px] faculty-card-revamped" data-department="literature">
-        <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
-          <div class="flip-card-front">
-            <div class="faculty-image-container w-36 h-36 rounded-full overflow-hidden mb-4 flex items-center justify-center">
-              <img src="https://placehold.co/150x150/D0D0D0/FFFFFF?text=Dr.+Elena+Rodriguez" alt="Dr. Elena Rodriguez" class="w-full h-full object-cover object-top">
+        <!-- Faculty Card 4: Bhuwan Khatiwoda -->
+        <div class="flip-card-container flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 p-4 snap-center h-[400px] faculty-card-revamped" data-department="literature">
+          <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
+            <div class="flip-card-front flex flex-col items-center p-0 text-center">
+              <img src="/bhuwan.png" alt="Bhuwan Khatiwoda" class="w-full h-56 object-cover object-center rounded-t-xl mb-4">
+              <div class="px-6 pb-6 w-full flex flex-col items-center">
+                <h3 class="text-2xl font-bold mb-1 text-neutral-800">Bhuwan Khatiwoda</h3>
+                <p class="text-neutral-700 text-lg font-semibold mb-2">Literature</p>
+                <p class="text-neutral-600 text-sm mb-3">A dynamic Literature driving brand awareness and engagement.</p>
+                <div class="flex space-x-4 mt-auto">
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-instagram-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-twitter-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-mail-line text-2xl"></i>
+                  </a>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold mb-1 text-neutral-800">Dr. Rtx 4050</h3>
-            <p class="text-neutral-600 mb-3">Professor of Literature</p>
-            <div class="flex space-x-3 mt-auto">
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-linkedin-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-twitter-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-mail-line"></i>
-              </a>
+            <div class="flip-card-back">
+              <p class="text-lg font-semibold italic">"Literature is not just words on a page; it is the mirror reflecting our souls and the window opening to infinite worlds."</p>
+              <p class="text-base mt-4">- Bhuwan Khatiwoda</p>
             </div>
-          </div>
-          <div class="flip-card-back">
-            <p class="text-lg font-semibold italic">"Stories are not just words on a page; they are the mirrors and windows to the human soul."</p>
-            <p class="text-base mt-4">- Dr. Rtx 4050</p>
           </div>
         </div>
-      </div>
 
-      <!-- Additional Faculty Cards for scrolling -->
-      <div class="flip-card-container h-[400px] faculty-card-revamped" data-department="accounting">
-        <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
-          <div class="flip-card-front">
-            <div class="faculty-image-container w-36 h-36 rounded-full overflow-hidden mb-4 flex items-center justify-center">
-              <img src="https://placehold.co/150x150/E0E0E0/FFFFFF?text=Prof.+Alice+Smith" alt="Prof. Alice Smith" class="w-full h-full object-cover object-top">
+        <!-- Faculty Card 5: Ranjit Gupta -->
+        <div class="flip-card-container flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 p-4 snap-center h-[400px] faculty-card-revamped" data-department="computer-science">
+          <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
+            <div class="flip-card-front flex flex-col items-center p-0 text-center">
+              <img src="/ranjit.jpg" alt="Ranjit Gupta" class="w-full h-56 object-cover object-center rounded-t-xl mb-4">
+              <div class="px-6 pb-6 w-full flex flex-col items-center">
+                <h3 class="text-2xl font-bold mb-1 text-neutral-800">Ranjit Gupta</h3>
+                <p class="text-neutral-700 text-lg font-semibold mb-2">Mathematics</p>
+                <p class="text-neutral-600 text-sm mb-3">A dedicated Academic fostering excellence.</p>
+                <div class="flex space-x-4 mt-auto">
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-instagram-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-twitter-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-mail-line text-2xl"></i>
+                  </a>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold mb-1 text-neutral-800">Prof. Alice Smith</h3>
-            <p class="text-neutral-600 mb-3">Professor of Accounting</p>
-            <div class="flex space-x-3 mt-auto">
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-linkedin-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-twitter-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-mail-line"></i>
-              </a>
+            <div class="flip-card-back">
+              <p class="text-lg font-semibold italic"> "Mathematics is the queen of the sciences, and number theory is the queen of mathematics. Its elegance unlocks the universe's secrets."</p>
+               <p class="text-base mt-4">-Ranjit Gupta</p>
             </div>
-          </div>
-          <div class="flip-card-back">
-            <p class="text-lg font-semibold italic">"Numbers tell a story; understanding them is the first step to financial mastery."</p>
-            <p class="text-base mt-4">- Prof. Alice Smith</p>
           </div>
         </div>
-      </div>
+         <!-- Faculty Card 5: Ranjit Gupta -->
+        <div class="flip-card-container flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 p-4 snap-center h-[400px] faculty-card-revamped" data-department="computer-science">
+          <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
+            <div class="flip-card-front flex flex-col items-center p-0 text-center">
+              <img src="https://placehold.co/300x224/E0E0E0/FFFFFF?text=Sushil" alt="Sushil" class="w-full h-56 object-cover object-center rounded-t-xl mb-4">
+              <div class="px-6 pb-6 w-full flex flex-col items-center">
+                <h3 class="text-2xl font-bold mb-1 text-neutral-800">Sushil</h3>
+                <p class="text-neutral-700 text-lg font-semibold mb-2">Computer Science</p>
+                <p class="text-neutral-600 text-sm mb-3">A dedicated Academic fostering excellence.</p>
+                <div class="flex space-x-4 mt-auto">
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-instagram-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-twitter-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-mail-line text-2xl"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <p class="text-lg font-semibold italic">"The future of technology isn't just about what we can build, but how we can use it to creatively solve humanity's most complex challenges."</p>
+               <p class="text-base mt-4">-Sushil</p>
+            </div>
+          </div>
+        </div>
+        
 
-      <div class="flip-card-container h-[400px] faculty-card-revamped" data-department="hotel-management">
-        <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
-          <div class="flip-card-front">
-            <div class="faculty-image-container w-36 h-36 rounded-full overflow-hidden mb-4 flex items-center justify-center">
-              <img src="https://placehold.co/150x150/F0F0F0/FFFFFF?text=Chef+David+Lee" alt="Chef David Lee" class="w-full h-full object-cover object-top">
+        <!-- Placeholder for additional faculty if needed -->
+        <div class="flip-card-container flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 p-4 snap-center h-[400px] faculty-card-revamped" data-department="literature">
+          <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
+            <div class="flip-card-front flex flex-col items-center p-0 text-center">
+              <img src="/sumit.jpg" alt="Sumit Eevs" class="w-full h-56 object-cover object-center rounded-t-xl mb-4">
+              <div class="px-6 pb-6 w-full flex flex-col items-center">
+                <h3 class="text-2xl font-bold mb-1 text-neutral-800">Sumit Eevs</h3>
+                <p class="text-neutral-700 text-lg font-semibold mb-2">Economics</p>
+                <p class="text-neutral-600 text-sm mb-3">Short description for Sumit Eevs.</p>
+                <div class="flex space-x-4 mt-auto">
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-instagram-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-twitter-fill text-2xl"></i>
+                  </a>
+                  <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
+                    <i class="ri-mail-line text-2xl"></i>
+                  </a>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold mb-1 text-neutral-800">Chef David Lee</h3>
-            <p class="text-neutral-600 mb-3">Head, Hotel Management</p>
-            <div class="flex space-x-3 mt-auto">
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-linkedin-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-twitter-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-mail-line"></i>
-              </a>
+            <div class="flip-card-back">
+              <p class="text-lg font-semibold italic"> "The economy is a complex dance of human decisions; understanding its principles is key to shaping a more prosperous and equitable future."</p>
+              <p class="text-base mt-4">-Sumit Eevs</p>
             </div>
-          </div>
-          <div class="flip-card-back">
-            <p class="text-lg font-semibold italic">"Hospitality is an art, and every guest experience is a masterpiece waiting to be created."</p>
-            <p class="text-base mt-4">- Chef David Lee</p>
           </div>
         </div>
       </div>
-
-      <div class="flip-card-container h-[400px] faculty-card-revamped" data-department="computer-science">
-        <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
-          <div class="flip-card-front">
-            <div class="faculty-image-container w-36 h-36 rounded-full overflow-hidden mb-4 flex items-center justify-center">
-              <img src="https://placehold.co/150x150/A5A5A5/FFFFFF?text=Dr.+Sarah+Chen" alt="Dr. Sarah Chen" class="w-full h-full object-cover object-top">
-            </div>
-            <h3 class="text-xl font-bold mb-1 text-neutral-800">Dr. Sarah Chen</h3>
-            <p class="text-neutral-600 mb-3">Lecturer in AI & ML</p>
-            <div class="flex space-x-3 mt-auto">
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-linkedin-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-twitter-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-mail-line"></i>
-              </a>
-            </div>
-          </div>
-          <div class="flip-card-back">
-            <p class="text-lg font-semibold italic">"Artificial intelligence is not just code; it's a reflection of human ingenuity and our quest for understanding."</p>
-            <p class="text-base mt-4">- Dr. Sarah Chen</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card-container h-[400px] faculty-card-revamped" data-department="accounting">
-        <div class="flip-card cursor-pointer group" onclick="this.classList.toggle('is-flipped'); triggerTsParticles(this);">
-          <div class="flip-card-front">
-            <div class="faculty-image-container w-36 h-36 rounded-full overflow-hidden mb-4 flex items-center justify-center">
-              <img src="https://placehold.co/150x150/B5B5B5/FFFFFF?text=Mr.+John+Doe" alt="Mr. John Doe" class="w-full h-full object-cover object-top">
-            </div>
-            <h3 class="text-xl font-bold mb-1 text-neutral-800">Mr. John Doe</h3>
-            <p class="text-neutral-600 mb-3">Senior Lecturer, Finance</p>
-            <div class="flex space-x-3 mt-auto">
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-linkedin-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-twitter-fill"></i>
-              </a>
-              <a href="#" class="social-icon-revamped w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
-                <i class="ri-mail-line"></i>
-              </a>
-            </div>
-          </div>
-          <div class="flip-card-back">
-            <p class="text-lg font-semibold italic">"Financial literacy is the cornerstone of personal and global prosperity."</p>
-            <p class="text-base mt-4">- Mr. John Doe</p>
-          </div>
-        </div>
-      </div>
+      <button id="slider-right-btn" class="absolute right-0 top-1/2 -translate-y-1/2 bg-neutral-800 text-white p-2 rounded-full shadow-lg z-10 opacity-70 hover:opacity-100 transition-opacity duration-300">
+        <i class="ri-arrow-right-s-line text-2xl"></i>
+      </button>
     </div>
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
@@ -1722,41 +1731,121 @@ display: block;
 
 
     document.addEventListener('DOMContentLoaded', function() {
-      const departmentFilters = document.getElementById('department-filters');
-      const facultyCards = document.querySelectorAll('.faculty-grid-container .flip-card-container');
+      const departmentFiltersContainer = document.getElementById('department-filters');
+      const facultySlider = document.getElementById('faculty-slider');
+      let facultyCards = document.querySelectorAll('#faculty-slider .flip-card-container'); // Get cards from the slider
 
+      // Filter function now only shows/hides within the slider
       function filterFaculty(department) {
         facultyCards.forEach(card => {
           if (department === 'all' || card.dataset.department === department) {
             card.classList.remove('hidden');
+            card.classList.add('flex'); // Ensure flex is on for non-hidden cards
           } else {
             card.classList.add('hidden');
+            card.classList.remove('flex'); // Remove flex when hidden
           }
         });
       }
 
-      departmentFilters.addEventListener('click', function(event) {
-        if (event.target.tagName === 'BUTTON') {
-          // Remove active class from all buttons
-          departmentFilters.querySelectorAll('button').forEach(btn => {
-            btn.classList.remove('bg-emerald-700', 'text-white');
-            btn.classList.add('text-neutral-700', 'hover:bg-neutral-300');
-          });
+      if (departmentFiltersContainer) {
+        departmentFiltersContainer.addEventListener('click', function(event) {
+          if (event.target.tagName === 'BUTTON') {
+            departmentFiltersContainer.querySelectorAll('button').forEach(btn => {
+              btn.classList.remove('bg-emerald-700', 'text-white');
+              btn.classList.add('text-neutral-700', 'hover:bg-neutral-300');
+            });
 
-          // Add active class to the clicked button
-          event.target.classList.add('bg-emerald-700', 'text-white');
-          event.target.classList.remove('text-neutral-700', 'hover:bg-neutral-300');
+            event.target.classList.add('bg-emerald-700', 'text-white');
+            event.target.classList.remove('text-neutral-700', 'hover:bg-neutral-300');
 
-          filterFaculty(event.target.dataset.department);
+            filterFaculty(event.target.dataset.department);
+          }
+        });
+        filterFaculty('all'); // Initial filter
+      }
+
+      // Slider Navigation Logic
+      const sliderLeftBtn = document.getElementById('slider-left-btn');
+      const sliderRightBtn = document.getElementById('slider-right-btn');
+
+      if (sliderLeftBtn && sliderRightBtn && facultySlider) {
+        // Calculate scroll amount based on one card's width plus gap
+        // Assuming p-4 adds 16px padding on each side, so 32px total per card
+        // And gap in faculty-grid-container is 1.5rem (24px)
+        // For a slider, we need to consider the cards' own padding and any internal gaps
+        // Let's scroll by the width of one card (including its p-4 padding)
+        const firstCard = facultyCards[0];
+        if (firstCard) {
+            const cardWidth = firstCard.offsetWidth; // This includes padding
+            sliderLeftBtn.addEventListener('click', () => {
+                facultySlider.scrollBy({
+                    left: -cardWidth, // Scroll by one card width
+                    behavior: 'smooth'
+                });
+            });
+
+            sliderRightBtn.addEventListener('click', () => {
+                facultySlider.scrollBy({
+                    left: cardWidth, // Scroll by one card width
+                    behavior: 'smooth'
+                });
+            });
         }
-      });
-
-      // Initial filter to show all departments
-      filterFaculty('all');
+      }
     });
   </script>
 </section>
 <!-- REVAMPED FACULTY SECTION ENDS HERE -->
+
+<style>
+/* Add these styles to your main <style> block in index.html */
+/* This will ensure the faculty grid lays out correctly */
+.faculty-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Makes it snap to cards */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari, Opera */
+.faculty-slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* Ensure cards take up appropriate width in the slider */
+.faculty-slider .flip-card-container {
+    flex: 0 0 auto; /* Prevent cards from shrinking */
+    /* w-full on mobile, then adjusts for sm:w-1/2, lg:w-1/3 in HTML */
+    /* Padding is now part of the card container, not the image */
+}
+
+/* Specific styling for social icons to ensure size from Remixicon */
+.social-icon-revamped i {
+    font-size: 1.5rem; /* text-2xl equivalent for the icon itself */
+}
+
+/* IMPORTANT: Ensure flip-card-front uses flex-direction column for proper layout */
+.flip-card-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center content */
+    text-align: center;  /* Center text */
+    padding: 0; /* No padding on the main front container to allow image to touch edges */
+}
+
+/* Styles for the back of the card, ensure it also centers its content */
+.flip-card-back {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+    align-items: center;     /* Horizontally center content */
+    text-align: center;      /* Center text */
+    padding: 1.5rem; /* Add some padding to the back for content */
+}
+</style>
 
 <!-- Virtual Campus Tour -->
 <section class="py-16 bg-section-soothing font-inter">
@@ -1786,11 +1875,11 @@ display: block;
         <div class="mb-6">
           <p class="flex items-center text-neutral-700 text-lg mb-3">
             <i class="ri-map-pin-line text-primary mr-3 text-2xl"></i>
-            <span>Baneshwor, Kathmandu, Nepal</span>
+            <span>Birtamode, Jhapa, Nepal</span>
           </p>
           <p class="flex items-center text-neutral-700 text-lg mb-3">
             <i class="ri-phone-line text-primary mr-3 text-2xl"></i>
-            <span>+977 1 4478901</span>
+            <span>+977 986-2994990</span>
           </p>
           <p class="flex items-center text-neutral-700 text-lg">
             <i class="ri-mail-line text-primary mr-3 text-2xl"></i>
@@ -1800,9 +1889,8 @@ display: block;
 
         <h4 class="text-xl font-semibold mb-4 text-neutral-800">Office Hours:</h4>
         <ul class="text-neutral-700 text-lg space-y-2 mb-8">
-          <li>Monday - Friday: 9:00 AM - 5:00 PM</li>
-          <li>Saturday: 10:00 AM - 2:00 PM</li>
-          <li>Sunday: Closed</li>
+          <li>Sunday - Friday: 9:00 AM - 5:00 PM</li>
+          <li>Saturday: Closed</li>
         </ul>
 
         <a href="https://www.google.com/maps/dir/?api=1&destination=Green+Field+World+School,+Baneshwor,+Kathmandu,+Nepal" target="_blank" rel="noopener noreferrer"
