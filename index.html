@@ -12,6 +12,7 @@
     theme: {
       extend: {
         colors: {
+         'partners-bg': '#EBE3DB',
           // Deep Teal as primary (emerald-700)
           primary: '#047857',
           // Muted Gold as secondary (amber-600) - used where a secondary accent is needed
@@ -94,7 +95,7 @@ body {
 font-family: 'Montserrat', sans-serif;
 transition: background-color 0.3s ease, color 0.3s ease;
 /* Crucial addition for mobile responsiveness: Prevent horizontal overflow */
-overflow-x: hidden; 
+overflow-x: hidden;
 }
 body.light-mode {
 background-color: #F8F5F1; /* subtle-light */
@@ -126,11 +127,11 @@ box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06
   width: 107%; /* Occupy full available width */
   max-width: 25ch; /* Original max width, but will respect parent's padding */
   overflow: hidden;
-  border-right: 0.15em solid #047857; /* primary color */
+border-right: 0.15em solid #047857; /* primary color */
   white-space: nowrap;
   /* Removed margin: 0 auto; as it's already centered by flex parent */
   letter-spacing: 0.15em;
-  /* Animation removed here as it's added dynamically by JS for better control */
+/* Animation removed here as it's added dynamically by JS for better control */
 }
 
 @keyframes typing {
@@ -336,7 +337,7 @@ transition: transform 0.3s ease;
 .mobile-menu.open {
 transform: translateX(0);
 /* Changed from 'visible' to 'block' to manage display more explicitly */
-display: block; 
+display: block;
 }
 /* Ensure elements that are normally flex or grid don't break on small screens */
 .flex-wrap-sm-down {
@@ -590,6 +591,111 @@ display: block;
 /* New soothing background for sections */
 .bg-section-soothing {
   background-color: #EBE3DB; /* Changed to a solid color */
+}
+
+/* --- New Styles for the Partners Section --- */
+/* Ensure the parent wrapper allows content to overflow for the image box */
+.partner-card-wrapper {
+    overflow: visible; /* Important for the image box to appear outside the bounds */
+}
+
+/* Base styles for the initial display button (the name) */
+.name-button {
+    transition-property: background-color, color, border-color, box-shadow;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    position: relative; /* Crucial for positioning stars and role text */
+    z-index: 10; /* Ensures the button is interactive and visible */
+}
+
+/* Styles for the permanent image box */
+.permanent-image-box {
+    /* No opacity/transition here, it's always visible */
+    z-index: 5; /* Can be lower than the button if needed, but higher than background */
+}
+
+/* Style for the role text */
+.role-text {
+    position: absolute;
+    bottom: -1.5rem; /* Adjust as needed to position below the button */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 700; /* font-bold */
+    color: #404040; /* neutral-700 (or adjust to neutral-900 if desired) */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out;
+    width: 100%; /* Ensure it spans the width of the button */
+    text-align: center;
+    z-index: 15; /* Above the name button */
+}
+
+/* On hover of the main group, the role text becomes visible */
+.group:hover .role-text {
+    opacity: 1;
+}
+
+/* --- Star Animation CSS --- */
+/* Base styles for all stars */
+.star {
+    position: absolute;
+    width: 0; /* Initially hidden */
+    height: auto; /* Maintain aspect ratio */
+    filter: drop-shadow(0 0 0 #fffdef); /* Initial subtle shadow */
+    z-index: 20; /* Ensures stars appear above the button content and role text */
+    opacity: 0; /* Initially transparent */
+    transition: all 0.5s cubic-bezier(0.05, 0.83, 0.43, 0.96); /* Smooth animation */
+}
+
+/* On hover of the .name-button, stars become visible and animate */
+.name-button:hover .star {
+    opacity: 1; /* Make visible on hover */
+}
+
+/* Specific positions and sizes for each star on hover */
+.name-button:hover .star-1 {
+    top: -80%;
+    left: -30%;
+    width: 25px;
+    filter: drop-shadow(0 0 10px #fffdef); /* Glow effect on hover */
+}
+
+.name-button:hover .star-2 {
+    top: -25%;
+    left: 10%;
+    width: 15px;
+    filter: drop-shadow(0 0 10px #fffdef);
+}
+
+.name-button:hover .star-3 {
+    top: 55%;
+    left: 25%;
+    width: 5px;
+    filter: drop-shadow(0 0 10px #fffdef);
+}
+
+.name-button:hover .star-4 {
+    top: 30%;
+    left: 80%;
+    width: 8px;
+    filter: drop-shadow(0 0 10px #fffdef);
+}
+
+.name-button:hover .star-5 {
+    top: 25%;
+    left: 115%;
+    width: 15px;
+    filter: drop-shadow(0 0 10px #fffdef);
+}
+
+.name-button:hover .star-6 {
+    top: 5%;
+    left: 60%;
+    width: 5px;
+    filter: drop-shadow(0 0 10px #fffdef);
+}
+
+/* SVG fill color for stars */
+.fil0 {
+    fill: #fffdef; /* Gold-like color for stars */
 }
 </style>
 </head>
@@ -890,25 +996,132 @@ display: block;
     </div>
 
     <!-- Revamped Accreditations & Affiliations Section -->
-    <div class="py-16 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl shadow-2xl mb-16">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-4xl font-bold text-neutral-800 mb-6">Our <span class="text-indigo-600">Partners</span> & Accreditations</h2>
-          <p class="text-lg text-neutral-700 max-w-2xl mx-auto">
-            We are proud to be recognized by and affiliated with leading educational and professional organizations worldwide.
-          </p>
+    <div class="py-16 bg-partners-bg rounded-xl shadow-2xl mb-16 w-full">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-neutral-800 mb-6">Our <span class="text-indigo-600">Partners</span> & Accreditations</h2>
+                <p class="text-lg text-neutral-700 max-w-2xl mx-auto">
+                    We are proud to be recognized by and affiliated with leading educational and professional organizations worldwide.
+                </p>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-10">
+
+                <!-- Aditya Shah Interactive Partner Card -->
+                <div class="relative flex flex-col items-center group
+                            w-48 h-auto /* Adjusted height to auto to fit content */
+                            transition-all duration-500 ease-in-out partner-card-wrapper">
+
+                    <!-- PERMANENT IMAGE BOX - stays visible -->
+                    <div class="w-40 h-32 rounded-lg shadow-md overflow-hidden mb-4 permanent-image-box"> <!-- Fixed size, added mb-4 for spacing -->
+                        <img src="/aditya.jpeg"
+                             alt="Aditya Shah"
+                             class="w-full h-full object-cover">
+                    </div>
+
+                    <!-- Name Button - positioned below the image box -->
+                    <div id="adityaNameButton"
+                         class="flex items-center justify-center w-full h-16 rounded-lg cursor-pointer
+                                bg-[#f0ede6] text-[#181818] border-3 border-[#f0ede6] shadow-lg text-lg font-bold
+                                hover:bg-neutral-900/80 hover:text-white hover:border-[#fec195] hover:shadow-[0_0_25px_#fec1958c]
+                                name-button">
+                        <span>Aditya Shah</span>
+
+                        <!-- Role Text -->
+                        <span class="role-text">Developer</span>
+
+                        <!-- Star SVG elements for Aditya -->
+                        <div class="star star-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                                <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+                            </svg>
+                        </div>
+                        <div class="star star-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                                <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+                            </svg>
+                        </div>
+                        <div class="star star-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                                <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+                        </svg>
+                        </div>
+                        <div class="star star-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                                <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+                            </svg>
+                        </div>
+                        <div class="star star-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                                <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+                            </svg>
+                        </div>
+                        <div class="star star-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                                <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pulkit Agrawal Interactive Partner Card -->
+                <div class="relative flex flex-col items-center group
+                            w-48 h-auto /* Adjusted height to auto to fit content */
+                            transition-all duration-500 ease-in-out partner-card-wrapper">
+
+                    <!-- PERMANENT IMAGE BOX - stays visible -->
+                    <div class="w-40 h-32 rounded-lg shadow-md overflow-hidden mb-4 permanent-image-box"> <!-- Fixed size, added mb-4 for spacing -->
+                        <img src="/pulkit.jpeg"
+                             alt="Pulkit Agrawal"
+                             class="w-full h-full object-cover">
+                    </div>
+
+                    <!-- Name Button - positioned below the image box -->
+                    <div id="pulkitNameButton"
+                         class="flex items-center justify-center w-full h-16 rounded-lg cursor-pointer
+                                bg-[#f0ede6] text-[#181818] border-3 border-[#f0ede6] shadow-lg text-lg font-bold
+                                hover:bg-neutral-900/80 hover:text-white hover:border-[#fec195] hover:shadow-[0_0_25px_#fec1958c]
+                                name-button">
+                        <span>Pulkit Agrawal</span>
+
+                        <!-- Role Text -->
+                        <span class="role-text">UI/UX Designer</span>
+
+                        <!-- Star SVG elements for Pulkit -->
+                        <div class="star star-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                                <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+                            </svg>
+                        </div>
+                        <div class="star star-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                                <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+                            </svg>
+                        </div>
+                        <div class="star star-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                                <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+                            </svg>
+                        </div>
+                        <div class="star star-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                                <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+                            </svg>
+                        </div>
+                        <div class="star star-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                                <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+                            </svg>
+                        </div>
+                        <div class="star star-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                                <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="flex flex-wrap justify-center items-center gap-10">
-          <div class="flex flex-col items-center group">
-            <img src="https://placehold.co/100x50/D4D4D4/262626?text=Aditya+shah" alt="Partner A Logo" class="h-14 object-contain transition-transform duration-300 group-hover:scale-110">
-            <p class="text-sm font-semibold text-neutral-700 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Developer</p>
-          </div>
-          <div class="flex flex-col items-center group">
-            <img src="https://placehold.co/100x50/D4D4D4/262626?text=Pulkit+Agrawal" alt="Partner B Logo" class="h-14 object-contain transition-transform duration-300 group-hover:scale-110">
-            <p class="text-sm font-semibold text-neutral-700 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">UI/UX Designer</p>
-          </div>
-        </div>
-      </div>
     </div>
 
   <script>
@@ -1350,9 +1563,9 @@ display: block;
             <div class="flip-card-front flex flex-col items-center p-0 text-center">
               <img src="/nepali.jpeg" alt="Nepali" class="w-full h-56 object-cover object-center rounded-t-xl mb-4">
               <div class="px-6 pb-6 w-full flex flex-col items-center">
-                <h3 class="text-2xl font-bold mb-1 text-neutral-800">Nepali Mam</h3>
+                <h3 class="text-2xl font-bold mb-1 text-neutral-800">Tulasha Mam</h3>
                 <p class="text-neutral-700 text-lg font-semibold mb-2">Nepali</p>
-                <p class="text-neutral-600 text-sm mb-3">A strategic Business ensuring financial stability and growth.</p>
+                <p class="text-neutral-600 text-sm mb-3">A strategic learning ensuring stability and growth.</p>
                 <div class="flex space-x-4 mt-auto">
                   <a href="#" class="social-icon-revamped w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-emerald-100">
                     <i class="ri-instagram-fill text-2xl"></i>
@@ -1486,7 +1699,7 @@ display: block;
             </div>
           </div>
         </div>
-        
+
 
         <!-- Placeholder for additional faculty if needed -->
         <div class="flip-card-container flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 p-4 snap-center h-[400px] faculty-card-revamped" data-department="literature">
